@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add Blog</title>
+    </head>
+    <body style="background-image: url('https://image.freepik.com/free-vector/travel-pattern-background_23-2148043441.jpg');background-color: rgba(255,255,255,0.5);
+    background-blend-mode: lighten;">
+        <nav class='nav'>
+            <div class='container'>
+              <h3 class='nav-item nav-brand' >Hello, {{user}}</h3>
+              <button class='toggler'>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+              <div class='nav-collapse'>
+                <a class='nav-item nav-link' href="/blogs/home">Home</a>
+                <a class='nav-item nav-link' href="/blogs/profile">Profile</a>
+                <a class='nav-item nav-link' href="/blogs/favourite">Favourite</a>
+                <a class='nav-item nav-link' href={{request.get_full_path}}>Add Blog</a>
+                <a class='nav-item nav-link' href="/signout">Signout</a>
+              </div>
+            </div>
+        </nav>
+        <div class="container1">
+        <div class="addblog">
+        <h1 class="h1">Add Blog</h1>
+        
+            <form action="/blogs/addblogs" method="post" id="add">
+                {% csrf_token %}
+                
+                    <input type="text" name="title" placeholder="title" required class="username" ><br>
+                    <input type="text" name="image" placeholder="image" required class="username" ><br>
+                   <textarea form="add" name="description" placeholder="description" required class="username"></textarea><br>
+                
+                <input class="btn" type="submit"><br>
+            </form>
+        </div>
+ 
+        <img src="https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?ixlib=rb-1.2.1&w=1000&q=80">
+      
+    </div>
+    </body>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+        * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Raleway', sans-serif;
+        box-sizing: border-box;
+        }
+        .container {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
+        .nav {
+        background: #000;
+        width: 100%;
+        height: 55px;
+        overflow: hidden;
+        transition: height .5s ease-in-out;
+        }
+        .nav-brand, .nav-link, .nav-collapse {
+        display: inline-block;
+        }
+        .nav-brand, .nav-link {
+        color: #fff;
+        text-decoration: none;
+        line-height: 55px;
+        padding: 0 1rem;
+        opacity: 0.8;
+        cursor: pointer;
+        }
+        .nav-brand {
+        font-size: 1.25rem;
+        }
+        .nav-link {
+        font-size: 1rem;
+        }
+        .nav-collapse {
+        float: right;
+        }
+        .toggler {
+        float: right;
+        width: 40px;
+        height: 18px;
+        margin: 18.5px 0;
+        background: none;
+        border: none;
+        outline: none;
+        display: none;
+        opacity: 0.8;
+        }
+        .toggler span {
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: #fff;
+        position: relative;
+        transition: .25s ease-in-out;
+        }
+        .toggler span:nth-child(1) {
+        top: -7.5px;
+        }
+        .toggler span:nth-child(2) {
+        top: 0;
+        }
+        .toggler span:nth-child(3) {
+        top: 7.5px;
+        }
+
+        .nav-brand:hover, .nav-link:hover, .toggler:hover, 
+        .nav-brand:focus, .nav-link:focus, .toggler:focus {
+        opacity: 1;
+        }
+
+        .nav.open .toggler span:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+        }
+        .nav.open .toggler span:nth-child(2) {
+        transform: translateX(-100%);
+        width: 0;
+        opacity: 0;
+        }
+        .nav.open .toggler span:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+        }
+        .nav.open {
+        height: 100vh;
+        }
+
+        @media (max-width: 767px) {
+        .nav-collapse, .nav-link {
+            float: none;
+            display: block;
+        }
+        .nav-link {
+            text-align: center;
+        }
+        .toggler {
+            display: block;
+        }
+        }
+    .container1{
+        display: flex;
+          justify-content: left;
+          padding-top:40px;
+          padding-left: 40px;
+          padding-right: 40px;
+    }
+
+
+    .square{
+        width: 50%;
+        height: auto;
+        background: white;
+        border-radius: 4px;
+        padding-bottom: 30px;
+        box-shadow: 0px 20px 50px #D9DBDF;
+        -webkit-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease; 
+    }
+
+
+    .h1{
+        
+        text-align: left;
+        margin-top: 80px;
+        padding-left: 50px;
+        
+        font-family: 'Merriweather', serif;
+        font-size: 36px;
+    }
+    
+    .addblog{
+        width: 30%;
+          height: 75%;
+          background: white;
+          border: solid rgb(0, 0, 0);
+          border-radius: 2px;
+          border-width: 2px;
+          padding-left: 53px;
+          padding-right: auto;
+          padding-bottom: 30px;
+    }
+    
+    .title{
+        width:400px;
+    }
+    .username{
+        background:#ecf0f1;
+        border: #ccc 1px solid;
+        border-bottom: #ccc 2px solid;
+        padding: 8px;
+        width:250px;
+        color:#AAAAAA;
+        margin-top:10px;
+        font-size:1em;
+        border-radius:4px;
+  }
+  .btn{
+    background: black;
+    width:100px;
+    padding: 5px 5px 5px 5px;
+    color:white;
+    border-radius:4px;
+    border: #27ae60 1px solid;
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-left:74px;
+    margin-right:auto;
+    font-weight:800;
+    font-size:0.8em;
+  }
+  img {
+      height: 410px;
+      width:450px;
+      margin-left: 190px;
+      box-shadow: 0px 50px 50px #000000;
+        -webkit-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease; 
+  }
+  img:hover {
+            -webkit-transform: translate(20px, -10px);
+            -ms-transform: translate(10px, -10px);
+            transform: translate(10px, -10px);
+            -webkit-box-shadow: 0 50px 50px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 20px 20px rgba(0, 0, 0);
+            }
+    </style>
+</html>
